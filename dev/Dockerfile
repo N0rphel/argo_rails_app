@@ -13,8 +13,9 @@ RUN bundle install
 COPY . /app
 
 ARG DEFAULT_PORT=3000
+ENV PORT=${DEFAULT_PORT}
 
 EXPOSE ${DEFAULT_PORT}
 
-CMD [ "bundle","exec", "puma", "config.ru"]
+CMD [ "bundle","exec", "puma", "config.ru", "-b", "tcp://0.0.0.0:${PORT}}"]
 
